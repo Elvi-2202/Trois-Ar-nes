@@ -1,5 +1,3 @@
-# arene.py (Code réduit)
-
 from abc import ABC, abstractmethod
 from dresseur import Dresseur
 from pokemon import Pokemon, PokemonFeu, PokemonEau, PokemonPlante 
@@ -7,13 +5,13 @@ from pokemon import Pokemon, PokemonFeu, PokemonEau, PokemonPlante
 XP_BASE_ARENE = 40 
 
 class Arene(ABC):
-    
-    def __init__(self, nom: str, type_arene: str):
+
+    def __init__(self, nom, type_arene):
         self.nom = nom
         self.type_arene = type_arene
 
     @abstractmethod
-    def creer_champion_niveau(self, niveau: int) -> Dresseur:
+    def creer_champion_niveau(self, niveau) -> Dresseur:
         pass
 
     def _executer_duel(self, poke_joueur: Pokemon, poke_champion: Pokemon) -> bool:
@@ -88,7 +86,7 @@ class Arene(ABC):
 
 class AreneFeu(Arene):
     def __init__(self): super().__init__("Arène du Feu", "Feu")
-    def creer_champion_niveau(self, niveau: int) -> Dresseur:
+    def creer_champion_niveau(self, niveau) -> Dresseur:
         base_niv = 14 + niveau * 2; base_pv = 80 + base_niv * 3; base_atk = 15 + base_niv
         champion = Dresseur(f"Pyra la Brûlante (Niv {niveau})")
         champion.ajouter_pokemon(PokemonFeu("Feurisson", base_niv, base_pv, base_atk))
@@ -98,7 +96,7 @@ class AreneFeu(Arene):
 
 class AreneEau(Arene):
     def __init__(self): super().__init__("Arène de l’Eau", "Eau")
-    def creer_champion_niveau(self, niveau: int) -> Dresseur:
+    def creer_champion_niveau(self, niveau) -> Dresseur:
         base_niv = 16 + niveau * 2; base_pv = 80 + base_niv * 3; base_atk = 15 + base_niv
         champion = Dresseur(f"Nereo le Marin (Niv {niveau})")
         champion.ajouter_pokemon(PokemonEau("Carabaffe", base_niv, base_pv, base_atk))
@@ -108,7 +106,7 @@ class AreneEau(Arene):
 
 class ArenePlante(Arene):
     def __init__(self): super().__init__("Arène de la Plante", "Plante")
-    def creer_champion_niveau(self, niveau: int) -> Dresseur:
+    def creer_champion_niveau(self, niveau) -> Dresseur:
         base_niv = 12 + niveau * 2; base_pv = 80 + base_niv * 3; base_atk = 15 + base_niv
         champion = Dresseur(f"Flora la Sage (Niv {niveau})")
         champion.ajouter_pokemon(PokemonPlante("Empiflor", base_niv, base_pv, base_atk))

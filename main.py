@@ -5,8 +5,7 @@ import random
 
 XP_BASE_SAUVAGE = 15 
 
-# Fonctions de Création
-def creer_pokemon_sauvage(niveau_moyen: int) -> Pokemon:
+def creer_pokemon_sauvage(niveau_moyen) -> Pokemon:
     type_choisi = random.choice(["Feu", "Eau", "Plante"])
     nom = random.choice(["Feunnec", "Pikachu", "Rondoudou", "Chenipan", "Roucool"]) 
     niveau = max(2, niveau_moyen + random.randint(-2, 2)) 
@@ -16,7 +15,6 @@ def creer_pokemon_sauvage(niveau_moyen: int) -> Pokemon:
     elif type_choisi == "Eau": return PokemonEau(nom, niveau, base_pv, base_atk)
     else: return PokemonPlante(nom, niveau, base_pv, base_atk)
 
-# Fonctions d'Interaction
 def choisir_pokemon_actif(joueur: Dresseur) -> Pokemon | None:
     pokemons_vivants = joueur.get_pokemons_vivants()
     if not pokemons_vivants:
@@ -85,7 +83,6 @@ def combat_sauvage(joueur: Dresseur):
         tour += 1
     print("Fin du combat sauvage.")
 
-# Fonctions d'Initialisation et d'Arène
 def initialiser_jeu() -> Dresseur:
     print("\n## Bienvenue dans la Région d'Avelia ! ##") 
     nom_joueur = input("Bienvenue ! Quel est ton nom de Dresseur ? : ")
